@@ -5,11 +5,6 @@ pipeline {
 
     stages {
 
-    stage('Code Checkout') {
-        steps{
-            echo 'Code Checkout'
-        }
-    }
     stage('Build') {
             steps{
                 echo 'Build'
@@ -19,11 +14,14 @@ pipeline {
     stage(' Unit Test') {
             steps{
                 echo 'Unit Test'
+                // sh 'npm test'
+                //sh 'python -m unittest'
+                //sh 'mvn test'
             }
     }
     stage('Code Analysis') {
             steps{
-                echo 'Code Analysis'
+                echo 'sonar-scanner -Dsonar.host.url=http://sonarqube private ip:9000 -Dsonar.login=admin -Dsonar.password=admin123  -Dsonar.projectkey=cart'
             }
 
     }
